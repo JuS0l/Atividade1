@@ -1,20 +1,22 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Atividade1.Models;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Math.EC.Multiplier;
 using System.Data;
 
 
 namespace Atividade1.Repositorio
 {
-    public class ProdutoRepositorio(IConfiguration Configuration)
+    public class  ProdutoRepositorio(IConfiguration Configuration)
     {
         private readonly string _conexaoMySQL = Configuration.GetConnectionString("ConexaoMySQL");
-        public ProdutoRepositorio ObterProduto(string email)
+        public Produto ObterProduto(string IdProd)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                MySqlCommand cmd = new("SELECT * from Usuarios where Email = @email", conexao);
-                cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+
+                MySqlCommand cmd = new("SELECT * from Produtos where IdProd = @IdProd", conexao);
+                cmd.Parameters.Add("@IdProd", MySqlDbType.VarChar).Value = IdProd;
 
                 using (MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection)) 
                 {
@@ -24,7 +26,7 @@ namespace Atividade1.Repositorio
                     {
                         produto = new Produto
                         {
-                            Id = Convert.ToInt32(dr["IdProd"]),
+                            IdProd = Convert.ToInt32(dr["IdProd"]),
                             Nome = dr["Nome"].ToString(),
                             Descricao = dr["Descricao"].ToString(),
                             Preco = Convert.ToDouble (dr["Preco"]),
@@ -45,7 +47,7 @@ namespace Atividade1.Repositorio
                 conexao.Open();
 
                 MySqlCommand cmd = new("INSERT INTO Produto(IdProd, Nome, Descricao, Preco, Quantidade) VALUES (@IdProd, @Nome, @Descricao, @Preco, @Quantidade)", conexao);
-                cmd.Parameters.AddWithValue("@IdProd", produto.Id);
+                cmd.Parameters.AddWithValue("@IdProd", produto.IdProd);
                 cmd.Parameters.AddWithValue("@Nome", produto.Nome);
                 cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
                 cmd.Parameters.AddWithValue("@Preco", produto.Preco);
