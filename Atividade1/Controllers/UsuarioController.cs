@@ -13,14 +13,12 @@ namespace Atividade1.Controllers
         {
             _usuarioRepositorio = usuarioRepositorio;
         }
+
         public IActionResult CadastroUsu()
         {
             return View();
         }
-        public IActionResult Login()
-        {
-            return View();
-        }
+  
         [HttpPost]
         public IActionResult CadastroUsu(Usuario usuario)
         {
@@ -29,19 +27,28 @@ namespace Atividade1.Controllers
             {
                 _usuarioRepositorio.AdcionarUsuario(usuario);
 
-                return RedirectToAction("Usuario");
+                return RedirectToAction("Login");
 
             }
             return View(usuario);
         }
-             public IActionResult Login(Usuario usuario)
+
+
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(Usuario usuario)
         {
 
             if (ModelState.IsValid)
             {
                 _usuarioRepositorio.AdcionarUsuario(usuario);
 
-                return RedirectToAction("Usuario", "Usuario");
+                return RedirectToAction("Produto", "Index");
 
             }
             return View(usuario);

@@ -1,4 +1,4 @@
-﻿using MySqlX.XDevAPI;
+﻿
 
 namespace Atividade1.Models
 {

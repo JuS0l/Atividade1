@@ -90,7 +90,7 @@ namespace Atividade1.Repositorio
                                 new Produto
                                 {
                                     IdProd = Convert.ToInt32(dr["IdProd"]), // Converte o valor da coluna "codigo" para inteiro
-                                    Nome = ((string)dr["nome"]), // Converte o valor da coluna "nome" para string
+                                    Nome = ((string)dr["Nome"]), // Converte o valor da coluna "nome" para string
                                 });
                 }
                 // Retorna a lista de todos os clientes
@@ -129,7 +129,7 @@ namespace Atividade1.Repositorio
                 {
                     // Preenche as propriedades do objeto Cliente com os valores da linha atual
                     produto.IdProd = Convert.ToInt32(dr["IdProd"]);//propriedade Codigo e convertendo para int
-                    produto.Nome = (string)(dr["nome"]); // propriedade Nome e passando string
+                    produto.Nome = (string)(dr["Nome"]); // propriedade Nome e passando string
                 }
                 // Retorna o objeto Cliente encontrado (ou um objeto com valores padrão se não encontrado)
                 return produto;

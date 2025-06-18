@@ -12,7 +12,7 @@ namespace Atividade1.Controllers
         {
             _produtoRepositorio = produtoRepositorio;
         }
-        public IActionResult index()
+        public IActionResult Index()
         {
             /* Retorna a View padrão associada a esta Action,
  passando como modelo a lista de todos os produtos obtido do repositório.*/
@@ -33,7 +33,7 @@ namespace Atividade1.Controllers
             {
                 _produtoRepositorio.AdcionarProduto(produto);
 
-                return RedirectToAction("Produto");
+                return RedirectToAction("Produto", "Index");
             }
             return View(produto);
 
