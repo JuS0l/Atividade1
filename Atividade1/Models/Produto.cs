@@ -1,4 +1,6 @@
-﻿namespace Atividade1.Models
+﻿using MySqlX.XDevAPI;
+
+namespace Atividade1.Models
 {
     public class Produto
     {
@@ -7,5 +9,7 @@
         public string Descricao { get; set; }
         public double Preco { get; set; }
         public int Quantidade { get; set; }
+        public List<Produto>? ListaProduto { get; set; }
     }
 }
+
