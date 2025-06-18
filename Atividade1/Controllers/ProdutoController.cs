@@ -12,17 +12,22 @@ namespace Atividade1.Controllers
         {
             _produtoRepositorio = produtoRepositorio;
         }
-
+        public IActionResult index()
+        {
+            /* Retorna a View padrão associada a esta Action,
+ passando como modelo a lista de todos os produtos obtido do repositório.*/
+            return View(_produtoRepositorio.TodosProdutos());
+        }
         public IActionResult Produto()
         {
             return View();
         }
-        public IActionResult Cadastro()
+        public IActionResult CadastroProd()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Cadastro(Produto produto)
+        public IActionResult CadastroProd(Produto produto)
         {
             if (ModelState.IsValid)
             {
