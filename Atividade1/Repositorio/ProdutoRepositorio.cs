@@ -47,8 +47,7 @@ namespace Atividade1.Repositorio
             {
                 conexao.Open();
 
-                MySqlCommand cmd = new("INSERT INTO Produto(IdProd, Nome, Descricao, Preco, Quantidade) VALUES (@IdProd, @Nome, @Descricao, @Preco, @Quantidade)", conexao);
-                cmd.Parameters.AddWithValue("@IdProd", produto.IdProd);
+                MySqlCommand cmd = new("INSERT INTO Produtos(Nome, Descricao, Preco, Quantidade) VALUES (@Nome, @Descricao, @Preco, @Quantidade)", conexao);
                 cmd.Parameters.AddWithValue("@Nome", produto.Nome);
                 cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
                 cmd.Parameters.AddWithValue("@Preco", produto.Preco);

@@ -41,17 +41,17 @@ namespace Atividade1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(Usuario usuario)
+        public IActionResult Login(string email, string senha)
         {
 
-            if (ModelState.IsValid)
-            {
-                _usuarioRepositorio.AdcionarUsuario(usuario);
+            var usuario = _usuarioRepositorio.ObterUsuario(email);
+            if (usuario != null && usuario.Senha == senha) {
 
-                return RedirectToAction("Produto", "Index");
+                return RedirectToAction("Index", "Produto");
 
             }
-            return View(usuario);
+            ModelState.AddModelError("", "Email ou Senha invalidos");
+            return View();
 
         }
     }

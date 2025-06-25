@@ -44,8 +44,7 @@ namespace Atividade1.Repositorio
             {
                 conexao.Open();
 
-                MySqlCommand cmd = new("INSERT INTO Usuarios(IdUser, Nome, Email, Senha) VALUES (@IdUser, @Nome, @Email, @Senha)", conexao);
-                cmd.Parameters.AddWithValue("@IdUser", usuario.IdUser);
+                MySqlCommand cmd = new("INSERT INTO Usuarios(Nome, Email, Senha) VALUES (@Nome, @Email, @Senha)", conexao);
                 cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
                 cmd.Parameters.AddWithValue("@Email", usuario.Email);
                 cmd.Parameters.AddWithValue("@Senha", usuario.Senha);

@@ -33,7 +33,7 @@ namespace Atividade1.Controllers
             {
                 _produtoRepositorio.AdcionarProduto(produto);
 
-                return RedirectToAction("Produto", "Index");
+                return RedirectToAction("Index");
             }
             return View(produto);
 
